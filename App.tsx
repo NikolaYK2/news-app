@@ -1,8 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {useEffect, useState} from "react";
-import {globalStyle} from "@/assets/style/globalStyle";
 import * as Font from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
+import {SafeAreaProvider} from "react-native-safe-area-context";
+import {Main} from "@/features/2-main/Main";
 
 const getFonts = () => Font.loadAsync({
   'popsMedium': require('@/assets/fonts/Poppins-Medium.ttf'),
@@ -11,6 +12,7 @@ const getFonts = () => Font.loadAsync({
 
 
 export default function App() {
+
   const [fontLoaded, setFontLoaded] = useState(false)//подключены ли шрифты
 
   useEffect(() => {
@@ -27,20 +29,14 @@ export default function App() {
   }
 
   return (
-    <View style={globalStyle.main}>
-      <Text>Hello!</Text>
-    </View>
+    <SafeAreaProvider>
+      <Main/>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
   // container: {
-  //   flex: 1,
-  //   backgroundColor: '#fff',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
   // },
-  // text:{
-  //   backgroundColor:'red'
-  // }
 });
+
